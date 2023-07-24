@@ -22,7 +22,11 @@ async function connectWallet(wallet) {
 <template>
   <div>
     <div class="flex flex-col space-y-2">
-      <button v-if="!store.isConnected" @click="open = true;" class="wave-button bg-white rounded font-semibold h-10 transition ease-in-out delay-150 hover:scale-105">
+      <button
+        v-if="!store.isConnected" 
+        @click="open = true;" 
+        class="wave-button bg-white rounded font-semibold h-10 transition ease-in-out delay-150 hover:scale-105 p-2"
+      >
         <img src="/wallet.svg" width="20" height="auto" alt="wallet" class="inline-flex mr-1 pb-1">
         Connect Wallet
       </button>

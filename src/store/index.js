@@ -10,9 +10,11 @@ export const useStore = defineStore('waveportal', {
     return {
       account: null,
       waves: [],
-      contract: {
-        address: import.meta.env.VITE_CONTRACT_ADDRESS,
-        gasLimit: 300000
+      contracts: {
+        copperDiamond: {
+          address: import.meta.env.VITE_COPPER_DIAMOND_ADDRESS,
+          gasLimit: 300000
+        }
       },
       network: {
         chainId: null,
@@ -27,9 +29,13 @@ export const useStore = defineStore('waveportal', {
     provider(state) {
       return new providers.Web3Provider(ethereum);
     },
-    wavePortalContract(state) {
+    // wavePortalContract(state) {
+    //   const signer = this.provider.getSigner(state.account ? state.account : state.contract.address);
+    //   return new ethers.Contract(state.contract.address, abi.abi, signer);
+    // },
+    copperTrustContract (state) {
       const signer = this.provider.getSigner(state.account ? state.account : state.contract.address);
-      return new ethers.Contract(state.contract.address, abi.abi, signer);
+      return new ethers.Contract(state.contract.address, copperTrustAbi.abi, signer);
     },
     isConnected: state => state.account ? true : false,
     isWrongNetwork: state => state.network.chainId ? state.network.chainId !== '0x5' : true,
@@ -46,7 +52,7 @@ export const useStore = defineStore('waveportal', {
       if (wallet == 'metamask') {
         await this.useMetamask();
       } else await this.useWalletConnect();
-      await this.fetchWaves();
+      // await this.fetchWaves();
     },
     async useMetamask() {
       const provider = await detectEthereumProvider();
@@ -80,26 +86,26 @@ export const useStore = defineStore('waveportal', {
     reload() {
       window.location.reload();
     },
-    async fetchWaves() {
-      const waves = await this.wavePortalContract.getAllWaves();
-      this.waves = [];
-      waves.forEach(wave => {
-        this.waves.push({
-          waver: wave.waver,
-          message: wave.message,
-          emoji: wave.emoji,
-          timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy'),
-          rawDate: new Date(wave.timestamp * 1000),
-          transaction: wave[0]
-        })
-      });
-      this.waves = this.waves.sort((a, b) => b.rawDate - a.rawDate);
-    },
-    async sendWave(wave) {
-      const waveTransaction = await this.wavePortalContract.wave(wave.message, wave.emoji, { gasLimit: this.contract.gasLimit });
-      await waveTransaction.wait();
-      await this.fetchWaves();
-      return waveTransaction.hash;
-    },
+    // async fetchWaves() {
+    //   const waves = await this.wavePortalContract.getAllWaves();
+    //   this.waves = [];
+    //   waves.forEach(wave => {
+    //     this.waves.push({
+    //       waver: wave.waver,
+    //       message: wave.message,
+    //       emoji: wave.emoji,
+    //       timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy'),
+    //       rawDate: new Date(wave.timestamp * 1000),
+    //       transaction: wave[0]
+    //     })
+    //   });
+    //   this.waves = this.waves.sort((a, b) => b.rawDate - a.rawDate);
+    // },
+    // async sendWave(wave) {
+    //   const waveTransaction = await this.wavePortalContract.wave(wave.message, wave.emoji, { gasLimit: this.contract.gasLimit });
+    //   await waveTransaction.wait();
+    //   await this.fetchWaves();
+    //   return waveTransaction.hash;
+    // },
   },
 })
