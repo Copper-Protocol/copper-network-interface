@@ -2,7 +2,8 @@ import { defineStore } from 'pinia';
 import { ethers, providers } from 'ethers';
 import WalletConnectProvider from '@walletconnect/web3-provider/dist/umd/index.min.js';
 import detectEthereumProvider from '@metamask/detect-provider'
-import abi from '../abis/WavePortal.json';
+// import abi from '../abis/WavePortal.json';
+
 import dateFormat from 'dateformat';
 
 export const useStore = defineStore('waveportal', {

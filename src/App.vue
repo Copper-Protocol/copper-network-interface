@@ -15,7 +15,7 @@ onMounted(() => isLoading.value = false);
 </script>
 
 <template>
-  <div class="h-screen w-screen bg-gray-800 text-white flex flex-wrap">
+  <div class="w-screen bg-gray-800 text-white flex flex-wrap">
     <NavTopbar class="h-24 w-screen" />
     <RouterView  />
   </div>
