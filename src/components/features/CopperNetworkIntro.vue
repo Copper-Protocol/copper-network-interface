@@ -1,5 +1,5 @@
 <template>
-  <BaseContainer class="bg-gray-800 lg:h-screen">
+  <BaseContainer class="bg-gray-800 ">
     <div class="p-8 text-grey-200">
       <div class="md:flex md:justify-center md:items-center">
         <div class="md:w-1/2 md:mr-8">

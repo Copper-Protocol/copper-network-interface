@@ -9,22 +9,22 @@ const menuItems = ref([
   {
     name: 'Network',
     icon: '',
-    to: '/'
+    to: '/construction'
   },
   {
     name: 'Docs',
     icon: '',
-    to: '/'
+    to: '/construction'
   },
   {
     name: 'Token',
     icon: '',
-    to: '/'
+    to: '/token'
   },
   {
     name: 'About',
     icon: '',
-    to: '/'
+    to: '/construction'
   },
 ])
 import menuLogo from '@/assets/images/Copper-Logo_light-p-500.png'

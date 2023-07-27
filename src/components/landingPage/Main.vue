@@ -5,7 +5,7 @@ import BaseContainer from "@/components/base/Container.vue"
 </script>
 
 <template>
-  <BaseContainer class="lg:h-screen bg-black items-center p-4">
+  <BaseContainer class=" bg-black items-center p-4">
     <div class=" w-full  lg:grid lg:grid-cols-2 lg:grid-flow-col lg:gap-4">
 
       <div id="" class="flex flex-wrap justify-center align-center">

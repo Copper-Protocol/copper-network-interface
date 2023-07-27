@@ -7,7 +7,7 @@ import vidPlaceHolder1 from "@/assets/images/vid-placeholder.jpg"
 </script>
 
 <template>
-  <BaseContainer class="bg-blue-800 lg:h-screen">
+  <BaseContainer class="bg-blue-800 ">
   <div class="w-full">
     <div class="">
       <div class="p-4">

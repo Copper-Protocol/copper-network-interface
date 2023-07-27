@@ -1,5 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 import Home from "@/pages/Home.vue"
+import Token from "@/pages/Token.vue"
+import Construction001 from "@/components/construction/001.vue"
 // import Docs from "@/views/Docs.vue"
 // import About from "@/views/About.vue"
 // import Ecosystem from "@/views/Ecosystem.vue"
@@ -9,7 +11,8 @@ import Home from "@/pages/Home.vue"
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Home },
-  // { path: '/docs', component: Docs },
+  { path: '/construction', component: Construction001 },
+  { path: '/token', component: Token },
   // { path: '/ecosystem', component: Ecosystem },
   // { path: '/about', component: About },
 ]
