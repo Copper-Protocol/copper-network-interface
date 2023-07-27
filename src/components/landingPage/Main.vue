@@ -5,11 +5,11 @@ import BaseContainer from "@/components/base/Container.vue"
 </script>
 
 <template>
-  <BaseContainer class="h-screen bg-black items-center">
+  <BaseContainer class="lg:h-screen bg-black items-center p-2">
     <div class=" w-full  grid grid-cols-2 grid-flow-col gap-4">
 
       <div id="" class="flex flex-wrap justify-center align-center">
-        <h2 class="text-5xl font-bold">Uniting Tribes Through Tokenization to Build a Strong and Collaborative Community</h2>
+        <h2 class="lg:text-5xl md:text-3xl font-bold">Uniting Tribes Through Tokenization to Build a Strong and Collaborative Community</h2>
         <p class="p-2">Our team of community-driven contributors are dedicated to creating better network tooling and seamless usability to bring the benefits of decentralization and sovereignty to the masses.</p>
         
         <div class="flex justify-between pb-4 pt-4 w-full">
