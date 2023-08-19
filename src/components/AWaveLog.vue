@@ -1,6 +1,6 @@
 <script setup>
-import { useStore } from '../store';
-const store = useStore();
+import { useCopperProtocolStore } from '../store';
+const store = useCopperProtocolStore();
 store.fetchWaves();
 </script>
 

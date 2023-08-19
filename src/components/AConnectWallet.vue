@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-import { useStore } from '../store';
+import { useCopperProtocolStore } from '../store';
 import AModal from './base/AModal.vue';
 import ALoading from './base/ALoading.vue';
 
-const store = useStore();
+const store = useCopperProtocolStore();
 const open = ref(false);
 const loading = ref({
   metamask: false,
@@ -21,11 +21,11 @@ async function connectWallet(wallet) {
 
 <template>
   <div>
-    <div class="flex flex-col space-y-2">
+    <div class="flex flex-col space-y-4">
       <button
         v-if="!store.isConnected" 
         @click="open = true;" 
-        class="wave-button bg-white rounded font-semibold h-10 transition ease-in-out delay-150 hover:scale-105 p-2"
+        class="wave-button bg-white rounded font-semibold h-10 transition ease-in-out delay-150 hover:scale-105 p-2 text-black"
       >
         <img src="/wallet.svg" width="20" height="auto" alt="wallet" class="inline-flex mr-1 pb-1">
         Connect Wallet

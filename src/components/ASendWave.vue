@@ -1,12 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { useStore } from '../store';
+import { useCopperProtocolStore } from '../store';
 import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon, RefreshIcon } from '@heroicons/vue/solid';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import AModal from './base/AModal.vue';
 import ALoading from './base/ALoading.vue';
 
-const store = useStore();
+const store = useCopperProtocolStore();
 const messages = [
   { id: 1, content: `Hello` },
   { id: 2, content: `Hi!` },

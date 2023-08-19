@@ -59,7 +59,9 @@ import { ref } from 'vue';
 import BaseContainer from "@/components/base/Container.vue"
 
 import imgFeature001 from "@/assets/images/feature-001.png"
-
+import { useRouter } from 'vue-router';
+  
+const router = useRouter();
 const title = ref("DAOPlus - Empowering Decentralized Governance")
 const description = ref(
   "DAOPlus is a revolutionary platform for decentralized governance, providing true autonomy and sovereignty to businesses and projects. Explore its features and unleash the potential of decentralization."
@@ -98,7 +100,7 @@ const onGetStarted = () => {
 const onJoinTheMovement = () => {
   // Implement logic to handle the "Join the Movement" button click
   // For example, redirect to a community forum or registration page for new users
-  alert(`onJoinTheMovement`)
+  router.push(`/join`)
 };
 </script>
 

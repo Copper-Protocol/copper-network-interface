@@ -1,34 +1,62 @@
 <script setup>
 import {ref} from 'vue'
+import NetworkSwitcher from '@/components/network/Switcher.vue'
+import {
+  HomeIcon,
+  DesktopComputerIcon,
+  BookOpenIcon,
+  CloudDownloadIcon,
+  CurrencyDollarIcon,
+  InformationCircleIcon
+} from "@vue-hero-icons/outline"
+
 const menuItems = ref([
 {
     name: 'Home',
-    icon: '',
+    icon: HomeIcon,
     to: '/'
   },
   {
     name: 'Network',
-    icon: '',
+    icon: DesktopComputerIcon,
     to: '/construction'
   },
   {
     name: 'Docs',
-    icon: '',
-    to: '/construction'
+    icon: BookOpenIcon,
+    to: '/docs'
+  },
+  {
+    name: 'Development',
+    icon: BookOpenIcon,
+    to: '/docs'
   },
   {
     name: 'Token',
-    icon: '',
+    icon: CurrencyDollarIcon,
     to: '/token'
   },
   {
+    name: 'Airdrop',
+    icon: CloudDownloadIcon,
+    to: '/airdrop'
+  },
+  {
     name: 'About',
-    icon: '',
-    to: '/construction'
+    icon: InformationCircleIcon,
+    to: '/about'
+  },
+  {
+    name: 'Admin',
+    icon: InformationCircleIcon,
+    to: '/admin/dashboard'
   },
 ])
 import menuLogo from '@/assets/images/Copper-Logo_light-p-500.png'
 import AConnectWallet from "@/components/AConnectWallet.vue"
+import {useCopperProtocolStore} from '@/store/index.js';
+const store = useCopperProtocolStore();
+
 </script>
 <template>
 <nav class="flex items-center justify-around flex-wrap bg-black p-6">
@@ -55,12 +83,20 @@ import AConnectWallet from "@/components/AConnectWallet.vue"
         class="block mt-4 lg:inline-block lg:mt-0 hover:text-teal-200 text-white mr-6 text-lg">
         {{ item.name }}
       </router-link>
-    <div class="inline-block">
-      <!-- <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-        Connect
-      </a> -->
-      <AConnectWallet />
-    </div> 
+      <div class="inline-block p-2 px-4">
+        <!-- <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+          Connect
+        </a> -->
+        <NetworkSwitcher class="z-10" />
+      </div> 
+      <div class="inline-block">
+        <!-- <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+          Connect
+        </a> -->
+        <AConnectWallet v-if="!store.account" />
+        <div class="" v-else>{{ store.account }}</div>
+      </div>
+
     </div>
   </div>
 </nav>

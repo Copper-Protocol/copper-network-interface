@@ -1,6 +1,6 @@
 <script setup>
-import { useStore } from '../store';
-const store = useStore();
+import { useCopperProtocolStore } from '@/store/index.js';
+const store = useCopperProtocolStore();
 </script>
 
 <template>

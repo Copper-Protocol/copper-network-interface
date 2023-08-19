@@ -1,6 +1,9 @@
 <script setup>
 import BaseContainer from "@/components/base/Container.vue"
 import imgCopperToken from "@/assets/images/CopperToken.png"
+import imgKeyFeatures from "@/assets/images/key-feature-01.jpeg"
+import imgUseCases from "@/assets/images/use-cases-01.jpeg"
+import imgSecurityMeasures from "@/assets/images/secure-me.jpeg"
 
 const keyFeatures = [
   "Secure and Immutable Transactions: Copper Token transactions are recorded on the Ethereum blockchain, ensuring security and transparency.",
@@ -28,7 +31,7 @@ const securityMeasures = [
 
 </script>
 <template>
-  <BaseContainer class="bg-gray-900">
+  <BaseContainer class="bg-gray-500">
     <div class="flex w-full flex-grow p-2 flex-wrap">
       <div class="w-2/3 p-2 mb-8">
         <h1 class="text-5xl font-bold w-full p-2">Copper Token</h1>
@@ -50,36 +53,49 @@ const securityMeasures = [
       <div class="w-1/3 p-2 mx-auto mb-8">
         <img :src="imgCopperToken" alt="Copper Token" />
       </div>
-      <div class="flex w-full flex-wrap justify-around">
-      <div class="w-2/3 border-1 border-gray-100 mb-8">
-        <h2 class="text-2xl font-semibold text-white mb-4">Key Features:</h2>
-        <ul class="list-disc list-inside text-white">
-          <li v-for="feature in keyFeatures" :key="feature" class="mb-4">
-            {{ feature }}
-          </li>
-        </ul>
-      </div>
 
-      <!-- Use Cases Section -->
-      <div class="w-2/3 border-1 border-gray-100 mb-8">
-        <h2 class="text-2xl font-semibold text-white mb-4">Use Cases:</h2>
-        <ul class="list-disc list-inside text-white">
-          <li v-for="useCase in useCases" :key="useCase" class="mb-4">
-            {{ useCase }}
-          </li>
-        </ul>
-      </div>
+        <div class="flex w-full flex-wrap justify-around">
+          <div class="w-1/3 p-2 mx-auto mb-8 px-4">
+          <img :src="imgKeyFeatures" alt="Copper Token" />
+        </div>
 
-     <!-- Security Measures Section -->
-      <div class="w-2/3 border-1 border-gray-100 mb-8">
-        <h2 class="text-2xl font-semibold text-white mb-4">Security Measures:</h2>
-        <ul class="list-disc list-inside text-white">
-          <li v-for="measure in securityMeasures" :key="measure" class="mb-4">
-            {{ measure }}
-          </li>
-        </ul>
+        <div class="w-2/3 border-1 border-gray-100 mb-8 px-4">
+          <h2 class="text-2xl font-semibold text-white mb-4">Key Features:</h2>
+          <ul class="list-disc list-inside text-white">
+            <li v-for="feature in keyFeatures" :key="feature" class="mb-4">
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Use Cases Section -->
+        <div class="w-2/3 border-1 border-gray-100 mb-8">
+          <h2 class="text-2xl font-semibold text-white mb-4">Use Cases:</h2>
+          <ul class="list-disc list-inside text-white">
+            <li v-for="useCase in useCases" :key="useCase" class="mb-4">
+              {{ useCase }}
+            </li>
+          </ul>
+          
+        </div>
+        <div class="w-1/3 p-2 mx-auto mb-8">
+          <img :src="imgUseCases" alt="Copper Token" />
+        </div>
+
+      <!-- Security Measures Section -->
+        <div class="w-1/3 p-2 mx-auto mb-8">
+          <img :src="imgSecurityMeasures" alt="Copper Token" />
+        </div>
+
+        <div class="w-2/3 border-1 border-gray-100 mb-8 px-4">
+          <h2 class="text-2xl font-semibold text-white mb-4">Security Measures:</h2>
+          <ul class="list-disc list-inside text-white">
+            <li v-for="measure in securityMeasures" :key="measure" class="mb-4">
+              {{ measure }}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
     </div>
   </BaseContainer>
 </template>

@@ -1,7 +1,7 @@
 {
   "name": "copper-network-frontend",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": "krypto kajun",
   "keywords": [
     "vue web3",
@@ -18,10 +18,13 @@
     "@headlessui/vue": "^1.6.7",
     "@heroicons/vue": "^1.0.6",
     "@metamask/detect-provider": "^1.2.0",
+    "@vue-hero-icons/outline": "^1.7.2",
     "@walletconnect/socket-transport": "^1.7.8",
     "@walletconnect/web3-provider": "^1.7.8",
+    "axios": "^1.4.0",
     "dateformat": "^5.0.3",
     "dotenv": "^16.0.1",
+    "eth-sig-util": "^3.0.1",
     "pinia": "^2.0.16",
     "sass": "^1.53.0",
     "vue": "^3.2.25",

@@ -1,9 +1,9 @@
 <script setup>
-import { useStore } from '../store';
+import { useCopperProtocolStore } from '../store';
 import AConnectWallet from './AConnectWallet.vue';
 import ASendWave from './ASendWave.vue';
 
-const store = useStore();
+const store = useCopperProtocolStore();
 </script>
 
 <template>
