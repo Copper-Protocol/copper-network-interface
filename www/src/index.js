@@ -11,18 +11,18 @@ app.use(helmet())
 
 const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-    name: 'session',
-    keys: ['key1', 'key2'],
-    cookie: {
-      secure: true,
-      httpOnly: true,
-      domain: 'localhost',
-      path: '/cache/sess.cookie',
-      expires: expiryDate
-    }
-  }))
+// app.set('trust proxy', 1) // trust first proxy
+// app.use(session({
+//     name: 'session',
+//     keys: ['key1', 'key2'],
+//     cookie: {
+//       secure: true,
+//       httpOnly: true,
+//       domain: 'localhost',
+//       path: '/cache/sess.cookie',
+//       expires: expiryDate
+//     }
+//   }))
   
 app.use(express.static('dist'))
 // last app.use calls right before app.listen():
