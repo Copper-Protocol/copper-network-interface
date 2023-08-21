@@ -18,7 +18,7 @@ app.use(session({
     cookie: {
       secure: true,
       httpOnly: true,
-      domain: 'coppernetwork.io',
+      domain: 'localhost',
       path: '/cache/sess.cookie',
       expires: expiryDate
     }
