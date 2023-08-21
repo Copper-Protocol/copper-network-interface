@@ -27,7 +27,7 @@
     >
       <ul>
         <li
-          v-for="network in store.networks"
+          v-for="network in copperStore.networks"
           :key="network.chainId"
           @click.prevent="handleSwitchNetwork(network)"
           class="cursor-pointer px-4 py-2 hover:bg-gray-100"
@@ -40,11 +40,11 @@
 </template>
 
 <script setup>
-import {useCopperProtocolStore} from '@/store/index.js';
+import {useCopperProtocolStore} from '@/store/copperProtocol.js';
 import {reactive, computed, ref, onServerPrefetch, onMounted} from 'vue'
-const store = useCopperProtocolStore();
+const copperStore = useCopperProtocolStore();
 
-const networkOptions = Object.keys(store.networks).map(key => ({...store.networks[key], chainId: key}))
+const networkOptions = Object.keys(copperStore.networks).map(key => ({...copperStore.networks[key], chainId: key}))
 console.log({networkOptions})
 const account = ref(null)
 
@@ -61,19 +61,18 @@ function toggleDropdown() {
 
 function handleSwitchNetwork(network) {
   console.log({network: parseInt(network.hex, 16), _: network})
-  selectedNetwork.value = store.networks[network.chainId] || 'Unkown';
+  selectedNetwork.value = copperStore.networks[network.chainId] || 'Unkown';
   showDropdown.value = false;
-  store.switchNetwork(network.chainId);
+  copperStore.switchNetwork(network.chainId);
 }
-
 
 onServerPrefetch(async () => {
   console.log(`prefetching`)
   // component is rendered as part of the initial request
   // pre-fetch data on server as it is faster than on the client
-  startingNetwork.value = await store.getCurrentNetwork()
+  startingNetwork.value = await copperStore.getCurrentNetwork()
   log({startingNetwork: startingNetwork.value})
-  selectedNetwork.value = store.networks[startingNetwork.value] || 'Unkown'
+  selectedNetwork.value = copperStore.networks[startingNetwork.value] || 'Unkown'
 })
 
 onMounted(async () => {
@@ -82,9 +81,9 @@ onMounted(async () => {
     // if startingNetwork is null on mount, it means the component
     // is dynamically rendered on the client. Perform a
     // client-side fetch instead.
-    startingNetwork.value = await store.getCurrentNetwork()
+    startingNetwork.value = await copperStore.getCurrentNetwork()
     console.log({_startingNetwork: startingNetwork.value})
-    selectedNetwork.value = store.networks[startingNetwork.value]  || 'Unkown'
+    selectedNetwork.value = copperStore.networks[startingNetwork.value]  || 'Unkown'
     console.log({__startingNetwork: startingNetwork.value})
 
   // } else {

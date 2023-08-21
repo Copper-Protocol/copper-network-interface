@@ -1,18 +1,16 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 import Home from "@/pages/Home.vue"
 import Token from "@/pages/Token.vue"
-import Docs from "@/pages/docs/Index.vue"
-import DocsHome from "@/pages/docs/Home.vue"
-import DocsPage from "@/pages/docs/Page.vue"
+
 import Airdrop from "@/pages/Airdrop.vue"
-import JoinTheMovement from "@/pages/JoinTheMovement.vue"
-import ThankYou from "@/pages/ThankYou.vue"
 import Construction001 from "@/components/construction/001.vue"
-import GettingStarted from '@/pages/docs/GettingStarted.vue';
 
 import About from "@/pages/About.vue"
-import Admin from "@/pages/admin/Index.vue"
-import AdminDashboard from "@/pages/admin/Dashboard.vue"
+
+import {docsRoutes} from './docs'
+import {extraRoutes} from './extras'
+import {adminRoutes} from './admin'
+
 // import Ecosystem from "@/pages/Ecosystem.vue"
 
 // 2. Define some routes
@@ -22,26 +20,12 @@ const routes = [
   { path: '/', component: Home },
   { path: '/construction', component: Construction001 },
   { path: '/token', component: Token },
-  { path: '/docs', component: Docs, 
-    children: [{
-    path: 'home', component: DocsHome
-  }, {
-    path: 'home/:id', component: DocsPage
-  }, {
-    path: 'getting-started', component: GettingStarted
-
-  }] 
-  },
   { path: '/airdrop', component: Airdrop },
-  { path: '/join', component: JoinTheMovement },
-  { path: '/thank-you', component: ThankYou },
-  // { path: '/ecosystem', component: Ecosystem },
   { path: '/about', component: About },
-  { path: '/admin', component: Admin, children: [
-    { path: 'dashboard', component: AdminDashboard, meta: { requiresAdmin: true }, },
-    // { path: 'dashboard', component: AdminDashboard, meta: { requiresAdmin: true }, },
-    // { path: 'dashboard', component: AdminDashboard, meta: { requiresAdmin: true }, },
-  ] },
+  docsRoutes,
+  ...extraRoutes,
+  adminRoutes,
+  // { path: '/ecosystem', component: Ecosystem },
 ]
 // Example function to verify Ethereum addresses using the signature
 async function verifySignature() {

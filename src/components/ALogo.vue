@@ -1,5 +1,5 @@
 <script setup>
-import { useCopperProtocolStore } from '@/store/index.js';
+import { useCopperProtocolStore } from '@/store/copperProtocol.js';
 const store = useCopperProtocolStore();
 </script>
 

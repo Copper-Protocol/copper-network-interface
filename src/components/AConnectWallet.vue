@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { useCopperProtocolStore } from '../store';
+import { useCopperProtocolStore } from '../store/copperProtocol';
 import AModal from './base/AModal.vue';
 import ALoading from './base/ALoading.vue';
 

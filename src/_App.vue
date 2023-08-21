@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useStore } from './store';
+import { useStore } from './store/copperProtocol';
 import ALogo from './components/ALogo.vue';
 import ALoading from './components/base/ALoading.vue';
 import AWaveIntro from './components/AWaveIntro.vue';

@@ -1,5 +1,5 @@
 <script setup>
-import { useCopperProtocolStore } from "@/store/index";
+import { useCopperProtocolStore } from "@/store/copperProtocol";
 import { ref } from "vue";
 
 import BaseContainer from '@/components/base/Container.vue'

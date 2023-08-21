@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 import { ethers, providers } from 'ethers';
 import WalletConnectProvider from '@walletconnect/web3-provider/dist/umd/index.min.js';
 import detectEthereumProvider from '@metamask/detect-provider';
@@ -11,7 +11,6 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
   state: () => {
     return {
       account: null,
-      waves: [],
       authorizedNetworks: [
         // 1, // ETH Mainnet
         5, // Goerli
@@ -84,6 +83,7 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
       },
       network: {
         chainId: null,
+        name: null
       },
       loading: false,
     };
@@ -129,6 +129,7 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
       );
     },
     isConnected: (state) => !!state.account,
+    currectNetwork: state => state.network,
     isWrongNetwork: (state) =>
       state.network.chainId
         ? !state.authorizedNetworks.includes(state.network.chainId)
@@ -137,29 +138,51 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
   actions: {
     async initialize() {
       try {
-        // Check if there's a connected account in local storage
-        const storedAccount = localStorage.getItem('copperProtocolAccount');
-        if (storedAccount) {
-          this.account = storedAccount;
+        // Check if there's a connected Ethereum provider
+        const provider = await detectEthereumProvider();
+    
+        // Check if there's a connected account and chainId
+        if (provider) {
+          // Get the current account and chainId from the connected provider
+          const accounts = await this.ethereum.request({ method: 'eth_accounts' });
+          const currentAccount = accounts[0];
+          const currentChainId = await this.getCurrentNetwork();
+    
+          // Check if there's a stored account and chainId in local storage
+          const storedAccount = localStorage.getItem('copperProtocolAccount');
+          const storedChainId = localStorage.getItem('copperProtocolChainId');
+    
+          // Compare the stored account with the current account
+          if (storedAccount && storedAccount.toLowerCase() !== currentAccount.toLowerCase()) {
+            // Update the stored account with the current account
+            localStorage.setItem('copperProtocolAccount', currentAccount);
+            this.account = currentAccount;
+          } else if (!storedAccount) {
+            // If there's no stored account, store the current account
+            localStorage.setItem('copperProtocolAccount', currentAccount);
+            this.account = currentAccount;
+          }
+    
+          // Check if the stored chainId matches the current chainId
+          if (storedChainId && parseInt(storedChainId, 10) !== currentChainId) {
+            // Automatically switch to the stored network
+            await this.switchNetwork(parseInt(storedChainId, 10));
+          }
+    
+          // Set the network chainId
+          this.network.chainId = currentChainId;
+    
+          // Add an event listener to handle network changes
+          const self = this;
+          this.ethereum.on('chainChanged', () => {
+            self.reload();
+          });
         }
-
-        // Check if there's a connected chainId in local storage
-        const storedChainId = localStorage.getItem('copperProtocolChainId');
-        if (storedChainId) {
-          this.network.chainId = parseInt(storedChainId, 10);
-        }
-
-        const chainId = await this.ethereum.request({ method: 'eth_chainId' });
-        this.network.chainId = parseInt(chainId, 16); // Convert chainId to a number
-        this.ethereum.on('chainChanged', () => {
-          window.location.reload();
-        });
       } catch (error) {
         console.error('Error initializing:', error.message);
       }
     },
-
-    async connectWallet(wallet) {
+    async  connectWallet(wallet) {
       try {
         if (wallet === 'metamask') {
           await this.useMetamask();
@@ -185,7 +208,7 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
           const signer = this.provider.getSigner(accounts[0]);
           const signature = await signer.signMessage(accounts[0]);
           this.account = accounts[0];
-
+          localStorage.setItem('copperProtocolAccount', this.account)
           this.network.chainId = parseInt(chainId, 16); // Convert chainId to a number
           if (this.isWrongNetwork) await this.switchNetwork();
         } else {
@@ -206,6 +229,8 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         const accounts = await web3.eth.getAccounts();
         const chainId = await web3.eth.getChainId();
         this.account = accounts[0];
+        localStorage.setItem('copperProtocolAccount', this.account)
+
         this.network.chainId = chainId;
         if (this.isWrongNetwork) await this.switchNetwork();
       } catch (error) {
@@ -233,10 +258,9 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: '0x' + chainId.toString(16) }],
         });
+        this.setNetwork(this.networks[chainId])
         this.reload();
 
-        // Store the connected chain ID in local storage
-        localStorage.setItem('copperProtocolChainId', this.network.chainId.toString());
       } catch (error) {
         console.error('Error switching network:', error.message);
       }
@@ -246,10 +270,43 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
       console.log(`FOUND NETWORK: `, this.network.chainId, this.networks, provider.chainId)
       return parseInt(provider.chainId, 16)
     },
+    async setNetwork (network) {
+      // Store the connected chain ID in local storage
+      return await localStorage.setItem('copperProtocolChainId', network.chainId);
+
+    },
+    async disconnectFromEth() {
+      console.log(`DISCONNECT...`)
+      try {
+        // Check if there's a connected Ethereum provider
+        const provider = await detectEthereumProvider();
+    
+        if (provider) {
+          // Disconnect the provider
+          await provider.disconnect();
+    
+          // Reset the account and network chainId
+          this.account = null;
+          this.network.chainId = null;
+    
+          // Clear the stored account and chainId from local storage
+          localStorage.removeItem('copperProtocolAccount');
+          localStorage.removeItem('copperProtocolChainId');
+        }
+      } catch (error) {
+        console.error('Error disconnecting from Ethereum:', error.message);
+      }
+    },
+    
     reload() {
       window.location.reload();
+      
     },
 
     // ... other actions ...
   },
 });
+// make sure to pass the right store definition, `useAuth` in this case.
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useCopperProtocolStore, import.meta.hot))
+}

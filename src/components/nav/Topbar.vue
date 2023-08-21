@@ -1,5 +1,8 @@
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
+import { storeToRefs } from 'pinia'
+import { formatEthAddress } from '../../lib/util'
+
 import NetworkSwitcher from '@/components/network/Switcher.vue'
 import {
   HomeIcon,
@@ -54,19 +57,27 @@ const menuItems = ref([
 ])
 import menuLogo from '@/assets/images/Copper-Logo_light-p-500.png'
 import AConnectWallet from "@/components/AConnectWallet.vue"
-import {useCopperProtocolStore} from '@/store/index.js';
-const store = useCopperProtocolStore();
+import {useCopperProtocolStore} from '@/store/copperProtocol.js';
+import {useNavigationStore} from '@/store/navigation.js';
 
+const ethersStore = useCopperProtocolStore();
+const navStore = useNavigationStore();
+const {topbar, getTopbar} = storeToRefs(navStore)
+const {disconnectFromEth} = ethersStore
+
+function disconnect () {
+  console.log(`DISCONNECT`)
+  disconnectFromEth()
+}
+onMounted(() => {
+  console.log(`Mounted...`, {topbarLinks: getTopbar})
+})
 </script>
 <template>
-<nav class="flex items-center justify-around flex-wrap bg-black p-6">
-  <div class="flex items-center flex-shrink-0 text-white mr-8">
-    <!-- <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> -->
-    <!-- <span class="font-semibold text-xl tracking-tight">Copper Network</span>
-   -->
+<nav class="flex items-center justify-between flex-wrap bg-black p-6 flex-shrink-1 flex-grow-0">
+  <div class="flex items-center flex-shrink-1 flex-grow-0 text-white mr-8">
    <span>
-    <img :src="menuLogo" alt="COPPER NETWORK" height="10px" width="250" />
+    <img :src="getTopbar.logoImg" :alt="getTopbar.title" height="10px" width="250" />
    </span>
   </div>
   <div class="block lg:hidden">
@@ -75,26 +86,25 @@ const store = useCopperProtocolStore();
     </button>
   </div>
   <div class="flex w-full block flex-grow lg:flex lg:items-right lg:w-auto justify-end">
-    <div class="text-sm lg:flex-grow  justify-end">
+    <div class="text-sm  justify-end">
       <router-link 
         :to="item.to" 
         :key="idx" 
-        v-for="(item, idx) in menuItems"
+        v-for="(item, idx) in topbar.menuItems"
         class="block mt-4 lg:inline-block lg:mt-0 hover:text-teal-200 text-white mr-6 text-lg">
         {{ item.name }}
       </router-link>
       <div class="inline-block p-2 px-4">
-        <!-- <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-          Connect
-        </a> -->
         <NetworkSwitcher class="z-10" />
       </div> 
-      <div class="inline-block">
-        <!-- <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-          Connect
-        </a> -->
-        <AConnectWallet v-if="!store.account" />
-        <div class="" v-else>{{ store.account }}</div>
+      <div class="inline-block" v-if="!ethersStore.account">
+        <AConnectWallet v-if="!ethersStore.account" />
+      </div>
+      <div class="inline-block p-2 px-4" v-if="ethersStore.account">
+          <button class="bg-green-500 hover:bg-green-600 text-white font-bold   py-3 px-4 rounded focus:outline-none focus:shadow-outline flex">{{ formatEthAddress(ethersStore.account) }}</button>
+      </div>
+      <div class="inline-block p-2 px-4" v-if="ethersStore.account">
+         <button @click="disconnectFromEth" class="bg-red-500 hover:bg-red-600 text-white font-bold   py-3 px-4 rounded focus:outline-none focus:shadow-outline flex">Disconnet Wallet</button>
       </div>
 
     </div>
