@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AccessControlModifiers",
+  "sourceName": "contracts/shared/facets/AccessControl/AccessControl/AccessControlModifiers.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212205e880e043123c07da87293fe7e70869e54166c2b6017327ac99c976458e1c00764736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212205e880e043123c07da87293fe7e70869e54166c2b6017327ac99c976458e1c00764736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

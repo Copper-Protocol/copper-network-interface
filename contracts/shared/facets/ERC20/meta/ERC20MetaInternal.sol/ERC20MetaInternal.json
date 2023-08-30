@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC20MetaInternal",
+  "sourceName": "contracts/shared/facets/ERC20/meta/ERC20MetaInternal.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122068075b1b2f8e8e056e5b96d3f5e6debc7f7d86ce9f57a65ca42e226efa72c2d564736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122068075b1b2f8e8e056e5b96d3f5e6debc7f7d86ce9f57a65ca42e226efa72c2d564736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

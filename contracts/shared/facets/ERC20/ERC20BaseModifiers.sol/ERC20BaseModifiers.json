@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC20BaseModifiers",
+  "sourceName": "contracts/shared/facets/ERC20/ERC20BaseModifiers.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220e1ecd9f2ea7b3a9d6a9fe45d5a1e014dc7c6b19429a5b71e431befe74d0623c764736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220e1ecd9f2ea7b3a9d6a9fe45d5a1e014dc7c6b19429a5b71e431befe74d0623c764736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

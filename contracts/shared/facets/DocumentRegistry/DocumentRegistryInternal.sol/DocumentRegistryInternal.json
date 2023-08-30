@@ -1,0 +1,129 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DocumentRegistryInternal",
+  "sourceName": "contracts/shared/facets/DocumentRegistry/DocumentRegistryInternal.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "docType",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "contentHash",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "name": "DocumentAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        }
+      ],
+      "name": "DocumentRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "totalDocTypes",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "string",
+          "name": "_type",
+          "type": "string"
+        }
+      ],
+      "name": "DocumentTypeAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "docType",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "contentHash",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "name": "DocumentUpdated",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220871d3662f158a2370695759b664eef38407dfead84722b9a9057ce6fb71f16d164736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220871d3662f158a2370695759b664eef38407dfead84722b9a9057ce6fb71f16d164736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

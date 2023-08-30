@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AccessControlInternal",
+  "sourceName": "contracts/shared/facets/AccessControl/AccessControl/AccessControlInternal.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220874d70f4ca02ea82b00d5455b3ea6b86721e1480e5f6a6dda604a43493622e5764736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220874d70f4ca02ea82b00d5455b3ea6b86721e1480e5f6a6dda604a43493622e5764736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

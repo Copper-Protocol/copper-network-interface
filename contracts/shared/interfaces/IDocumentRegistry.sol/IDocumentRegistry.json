@@ -1,0 +1,230 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IDocumentRegistry",
+  "sourceName": "contracts/shared/interfaces/IDocumentRegistry.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_type",
+          "type": "string"
+        }
+      ],
+      "name": "addDocType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "docType",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "contentHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "name": "addDocument",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "docType",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "contentHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "name": "addDocument",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        }
+      ],
+      "name": "documents",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "docType",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "contentHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_type",
+          "type": "string"
+        }
+      ],
+      "name": "getDocTypeByName",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "docTypeId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_type",
+          "type": "string"
+        }
+      ],
+      "name": "hasDocType",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalDocuments",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalDocs",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "docType",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "datetimePublished",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "contentHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "name": "updateDocument",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

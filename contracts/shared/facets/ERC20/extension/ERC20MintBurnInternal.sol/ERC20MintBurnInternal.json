@@ -1,0 +1,89 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC20MintBurnInternal",
+  "sourceName": "contracts/shared/facets/ERC20/extension/ERC20MintBurnInternal.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "BurnerAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "BurnerRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MintBurnAdminAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MintBurnAdminRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MinterAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MinterRemoved",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212200f0f3a54c50de87f1160654892e96fcd6c4001153f97f312961e74340d268cb464736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212200f0f3a54c50de87f1160654892e96fcd6c4001153f97f312961e74340d268cb464736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,102 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "TrustInternal",
+  "sourceName": "contracts/shared/facets/Trust/TrustInternal.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trustee",
+          "type": "address"
+        }
+      ],
+      "name": "TrusteeAccepted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trustee",
+          "type": "address"
+        }
+      ],
+      "name": "TrusteeAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trustee",
+          "type": "address"
+        }
+      ],
+      "name": "TrusteeDeclined",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trustee",
+          "type": "address"
+        }
+      ],
+      "name": "TrusteeRevoked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "GRANTOR_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TRUSTEE_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TRUSTEE_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60a06040523373ffffffffffffffffffffffffffffffffffffffff1660809073ffffffffffffffffffffffffffffffffffffffff1681525034801561004357600080fd5b5060805161017661005c600039600050506101766000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80637277764914610046578063c50a40b514610064578063e15fb83f14610082575b600080fd5b61004e6100a0565b60405161005b9190610125565b60405180910390f35b61006c6100c4565b6040516100799190610125565b60405180910390f35b61008a6100e8565b6040516100979190610125565b60405180910390f35b7f700b68d05515876e1b5bee45535f56f17ecf1fbb63ac93e8914591401365025d81565b7f7e6469f1a61b2adc85652d90bc4338c024ede1c3ef533071de9f6fd1c59bf2ca81565b7fd10feaa7fea55567e367a112bc53907318a50949442dfc0570945570c5af57cf81565b6000819050919050565b61011f8161010c565b82525050565b600060208201905061013a6000830184610116565b9291505056fea2646970667358221220c946983a619ef160d6048e47a679dd097ec0fd97d60ff233e8793b2c8dfd758364736f6c63430008120033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80637277764914610046578063c50a40b514610064578063e15fb83f14610082575b600080fd5b61004e6100a0565b60405161005b9190610125565b60405180910390f35b61006c6100c4565b6040516100799190610125565b60405180910390f35b61008a6100e8565b6040516100979190610125565b60405180910390f35b7f700b68d05515876e1b5bee45535f56f17ecf1fbb63ac93e8914591401365025d81565b7f7e6469f1a61b2adc85652d90bc4338c024ede1c3ef533071de9f6fd1c59bf2ca81565b7fd10feaa7fea55567e367a112bc53907318a50949442dfc0570945570c5af57cf81565b6000819050919050565b61011f8161010c565b82525050565b600060208201905061013a6000830184610116565b9291505056fea2646970667358221220c946983a619ef160d6048e47a679dd097ec0fd97d60ff233e8793b2c8dfd758364736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

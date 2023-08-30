@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "CopperGov",
+  "sourceName": "contracts/CopperGov/CopperGov.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220566340af56c6fb13ce1d8ccf32bf59d633c7d21e55ea456a65ce45dd7a9b964264736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220566340af56c6fb13ce1d8ccf32bf59d633c7d21e55ea456a65ce45dd7a9b964264736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

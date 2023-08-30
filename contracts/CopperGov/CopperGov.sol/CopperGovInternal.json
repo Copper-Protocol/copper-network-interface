@@ -1,0 +1,68 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "CopperGovInternal",
+  "sourceName": "contracts/CopperGov/CopperGov.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "proposer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "name": "ProposalCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "proposalId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ProposalExecuted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "txHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TransactionQueued",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212207781da8781eda83f1da99325dd2110373e3f4d2973b71de20caba0b94b76be8864736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212207781da8781eda83f1da99325dd2110373e3f4d2973b71de20caba0b94b76be8864736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

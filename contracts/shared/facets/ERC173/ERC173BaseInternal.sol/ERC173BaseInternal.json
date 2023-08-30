@@ -1,0 +1,30 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC173BaseInternal",
+  "sourceName": "contracts/shared/facets/ERC173/ERC173BaseInternal.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oldOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212202a8192ce32a321ffafe26e5721c757816628951078dc380f87771b5cbd39d93c64736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212202a8192ce32a321ffafe26e5721c757816628951078dc380f87771b5cbd39d93c64736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

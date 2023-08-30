@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC20Meta",
+  "sourceName": "contracts/shared/facets/ERC20/meta/ERC20Meta.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212208e894511296bdaef056ff941e537709d4fea5405237a82b155aea5245c9d3c3b64736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212208e894511296bdaef056ff941e537709d4fea5405237a82b155aea5245c9d3c3b64736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

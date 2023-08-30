@@ -1,0 +1,129 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC1155BaseInternal",
+  "sourceName": "contracts/shared/facets/ERC1155/base/ERC1155BaseInternal.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "values",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "TransferBatch",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferSingle",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "URI",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212208012358e1d875ac2b2a39ec0f4294ba8ce818df4b245896f189c25b28b1db13164736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212208012358e1d875ac2b2a39ec0f4294ba8ce818df4b245896f189c25b28b1db13164736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

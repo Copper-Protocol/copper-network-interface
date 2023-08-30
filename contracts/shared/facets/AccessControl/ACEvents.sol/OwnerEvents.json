@@ -1,0 +1,30 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "OwnerEvents",
+  "sourceName": "contracts/shared/facets/AccessControl/ACEvents.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220a7aad322617dd821c1743a8ac65fffa90aeefc93aab20486d98fbba4e4601b6f64736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220a7aad322617dd821c1743a8ac65fffa90aeefc93aab20486d98fbba4e4601b6f64736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
