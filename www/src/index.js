@@ -28,7 +28,7 @@ console.log(`-->`, process.cwd() + 'dist')
 app.use('/', express.static('dist'))
 // last app.use calls right before app.listen():
 
-custom 404
+// custom 404
 app.use((req, res, next) => {
     res.status(404).send("Sorry can't find that! => ", process.cwd())
 })
