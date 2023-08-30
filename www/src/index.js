@@ -1,6 +1,6 @@
 const express = require('express')
-// const helmet = require('helmet')
-// const session = require('express-session')
+const helmet = require('helmet')
+const session = require('express-session')
 
 const app = express()
 const host = process.env.HOST || `0.0.0.0`
