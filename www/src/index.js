@@ -25,7 +25,7 @@ const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 //   }))
   
 console.log(`-->`, process.cwd() + 'dist')
-app.use('/', express.static(process.cwd() + 'dist'))
+app.use('/', express.static('dist'))
 // last app.use calls right before app.listen():
 
 // custom 404
