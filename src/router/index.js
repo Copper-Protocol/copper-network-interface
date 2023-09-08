@@ -3,6 +3,7 @@ import Home from "@/pages/Home.vue"
 import Token from "@/pages/Token.vue"
 
 import Airdrop from "@/pages/Airdrop.vue"
+// import FileUploader from "@/pages/FileUploader.vue"
 import Construction001 from "@/components/construction/001.vue"
 
 import About from "@/pages/About.vue"
@@ -21,6 +22,7 @@ const routes = [
   { path: '/construction', component: Construction001 },
   { path: '/token', component: Token },
   { path: '/airdrop', component: Airdrop },
+  // { path: '/fileUploader', component: FileUploader },
   { path: '/about', component: About },
   docsRoutes,
   ...extraRoutes,

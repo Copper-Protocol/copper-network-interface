@@ -55,13 +55,13 @@ let startingNetwork = ref(11155111)
 let selectedNetwork = ref(``); // Set the default selected network
 console.log({selectedNetwork: selectedNetwork.value})
 function toggleDropdown() {
-  console.log(`TOGGLE DROP DOWN`, {showDropdown, selectedNetwork: selectedNetwork.value})
+  console.log(`TOGGLE DROP DOWN`, {showDropdown: showDropdown.value, selectedNetwork: selectedNetwork.value})
   showDropdown.value = !showDropdown.value;
 }
 
 function handleSwitchNetwork(network) {
   console.log({network: parseInt(network.hex, 16), _: network})
-  selectedNetwork.value = copperStore.networks[network.chainId] || 'Unkown';
+  selectedNetwork.value = copperStore.networks[network.chainId] || {name: 'Unkown'};
   showDropdown.value = false;
   copperStore.switchNetwork(network.chainId);
 }
@@ -72,7 +72,7 @@ onServerPrefetch(async () => {
   // pre-fetch data on server as it is faster than on the client
   startingNetwork.value = await copperStore.getCurrentNetwork()
   log({startingNetwork: startingNetwork.value})
-  selectedNetwork.value = copperStore.networks[startingNetwork.value] || 'Unkown'
+  selectedNetwork.value = copperStore.networks[startingNetwork.value] || {name: 'Unkown'}
 })
 
 onMounted(async () => {
@@ -83,7 +83,7 @@ onMounted(async () => {
     // client-side fetch instead.
     startingNetwork.value = await copperStore.getCurrentNetwork()
     console.log({_startingNetwork: startingNetwork.value})
-    selectedNetwork.value = copperStore.networks[startingNetwork.value]  || 'Unkown'
+    selectedNetwork.value = copperStore.networks[startingNetwork.value]  || {name: 'Unkown'}
     console.log({__startingNetwork: startingNetwork.value})
 
   // } else {

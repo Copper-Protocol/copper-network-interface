@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
+    "@helia/unixfs": "^1.4.1",
     "@heroicons/vue": "^1.0.6",
     "@metamask/detect-provider": "^1.2.0",
     "@vue-hero-icons/outline": "^1.7.2",
@@ -27,6 +28,7 @@
     "eth-sig-util": "^3.0.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "helia": "^2.0.1",
     "helmet": "^7.0.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.16",
@@ -36,6 +38,7 @@
     "synk": "^0.0.2",
     "tw-elements": "^1.0.0-beta3",
     "vue": "^3.2.25",
+    "vue-next": "^0.0.1",
     "vue-router": "^4.2.4",
     "web3": "^1.7.4"
   },

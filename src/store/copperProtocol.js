@@ -7,16 +7,21 @@ import copperTrustAbi from '@/ethers-artifacts/contracts/CopperDiamond/facets/Co
 import copperTokenAbi from '@/ethers-artifacts/contracts/CopperToken/CopperToken.sol/CopperToken.json';
 import copperAirdropAbi from '@/ethers-artifacts/contracts/CopperAirdrop/CopperAirdrop.sol/CopperAirdrop.json';
 
+import copperContracts from "@/../evm-config/contracts.json"
+
 export const useCopperProtocolStore = defineStore('copperProtocol', {
   state: () => {
     return {
       account: null,
+      copperBalance: 0,
+      chainBalance: 0,
       authorizedNetworks: [
+        1137,
         // 1, // ETH Mainnet
         5, // Goerli
         11155111, // Sepolia
         // 100, // Gnosischain
-        // 137, // polygon
+        137, // polygon
         // 42161, // Arbitrum One
         // 42170, // Arbitrum Nova
         // 421613, // Arbitrum Goerli
@@ -24,6 +29,11 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         // 420, // Optimism Goerli
       ],
       networks: {
+        1137: {
+          hex: '0x471',
+          name: 'Localhost',
+          chainId: 1137
+        },
         // 1: {
         //   hex: '0x1',
         //   name: 'ETH Mainnet',
@@ -42,10 +52,11 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         //   hex: '0x64',
         //   name: 'Gnosischain',
         // },
-        // 137: {
-        //   hex: '0x89',
-        //   name: 'Polygon',
-        // },
+        137: {
+          hex: '0x89',
+          name: 'Matic',
+          chainId: 137
+        },
         // 42161: {
         //   hex: '0xA421',
         //   name: 'Arbitrum One',
@@ -68,18 +79,35 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         // },
       },
       contracts: {
-        copperDiamond: {
-          address: import.meta.env.VITE_COPPER_DIAMOND_ADDRESS,
-          gasLimit: 300000,
+        sepolia: {
+          copperDiamond: {
+            address: import.meta.env.VITE_SEPOLIA_COPPER_DIAMOND_ADDRESS,
+            gasLimit: 300000,
+          },
+          copperToken: {
+            address: import.meta.env.VITE_SEPOLIA_COPPER_TOKEN_ADDRESS,
+            gasLimit: 300000,
+          },
+          copperAirdrop: {
+            address: import.meta.env.VITE_SEPOLIA_COPPER_AIRDROP_ADDRESS,
+            gasLimit: 300000,
+          },
         },
-        copperToken: {
-          address: import.meta.env.VITE_COPPER_TOKEN_ADDRESS,
-          gasLimit: 300000,
-        },
-        copperAirdrop: {
-          address: import.meta.env.VITE_COPPER_AIRDROP_ADDRESS,
-          gasLimit: 300000,
-        },
+        matic: {
+          copperDiamond: {
+            address: import.meta.env.VITE_MATIC_COPPER_DIAMOND_ADDRESS,
+            gasLimit: 300000,
+          },
+          copperToken: {
+            address: import.meta.env.VITE_MATIC_COPPER_TOKEN_ADDRESS,
+            gasLimit: 300000,
+          },
+          copperAirdrop: {
+            address: import.meta.env.VITE_MATIC_COPPER_AIRDROP_ADDRESS,
+            gasLimit: 300000,
+          },
+        }
+
       },
       network: {
         chainId: null,
@@ -98,33 +126,67 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
     // account(state) {
     //   return state.account
     // },
+    getContractAddress () {
+      return (network, contractName) => {
+        if (network.toLowerCase() === 'localhost') network = 'unknown'
+        console.log(`GETTING CONTRACT ADDRESS`, {network, contractName, _: copperContracts.addresses})
+        const contractsAddress =  copperContracts.addresses[network.toLowerCase()][contractName]
+        console.log(`contractsAddress`, contractsAddress)
+        return contractsAddress
+      }
+    },
+    getContract (state) {
+      return (network, contractName, abi, signer) => {
+        console.log(`Getting Contract => ${contractName}`)
+        const address = this.getContractAddress(network, contractName)
+        return new ethers.Contract(
+          address,
+          abi.abi,
+          signer
+        )
+      }
+    },
     copperTrustContract(state) {
       const signer = state.provider.getSigner(
-        state.account ? state.account : state.contracts.copperDiamond.address
+        state.account ? state.account : state.contracts[state.network.name.toLowerCase()].copperDiamond.address
       );
-      return new ethers.Contract(
-        state.contracts.copperDiamond.address,
-        copperTrustAbi.abi,
+      return this.getContract(
+        state.network.name,
+        'CopperTrust',
+        copperTrustAbi,
         signer
       );
     },
     copperTokenContract(state) {
       const signer = state.provider.getSigner(
-        state.account ? state.account : state.contracts.copperToken.address
+        state.account ? state.account : state.contracts[state.network.name.toLowerCase()].copperToken.address
       );
-      return new ethers.Contract(
-        state.contracts.copperToken.address,
-        copperTokenAbi.abi,
+      return this.getContract(
+        state.network.name,
+        'CopperToken',
+        copperTokenAbi,
         signer
       );
     },
     copperAirdropContract(state) {
+      console.log(`+++ DEBUG AirDropContract +++`)
+      console.log(`
+      NETWORK: ${JSON.stringify(state.network, null, 2)}
+      `)
       const signer = state.provider.getSigner(
-        state.account ? state.account : state.contracts.copperAirdrop.address
+        state.account ? state.account : state.contracts[state.network.name.toLowerCase()].copperAirdrop.address
       );
-      return new ethers.Contract(
-        state.contracts.copperAirdrop.address,
-        copperAirdropAbi.abi,
+
+      console.log(
+        state.network.name,
+        'CopperAirdrop',
+        copperAirdropAbi,
+        signer        
+      )
+      return this.getContract(
+        state.network.name,
+        'CopperAirdrop',
+        copperAirdropAbi,
         signer
       );
     },
@@ -170,12 +232,28 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
           }
     
           // Set the network chainId
-          this.network.chainId = currentChainId;
-    
+          this.network = this.networks[currentChainId];
+          console.log({network: this.network})
           // Add an event listener to handle network changes
           const self = this;
           this.ethereum.on('chainChanged', () => {
             self.reload();
+          });
+          this.ethereum.on('accountsChanged', (accounts) => {
+            self.reload();
+            log({accounts})
+          });
+          this.ethereum.on('connect', (data) => {
+            // self.reload();
+            console.log(`CONNECTED...`, data)
+          });
+          this.ethereum.on('disconnect', (data) => {
+            // self.reload();
+            console.log(`DISCONNECTED...`, data)
+          });
+          this.ethereum.on('message', (msg) => {
+            // self.reload();
+            console.log(`Got Message...`, msg)
           });
         }
       } catch (error) {
@@ -206,8 +284,9 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
             method: 'eth_chainId',
           });
           const signer = this.provider.getSigner(accounts[0]);
-          const signature = await signer.signMessage(accounts[0]);
+          const signature = await signer.signMessage(`Log in to Copper Network`);
           this.account = accounts[0];
+          this.hasClaimed = await this.copperAirdropContract.hasClaimed(this.account)
           localStorage.setItem('copperProtocolAccount', this.account)
           this.network.chainId = parseInt(chainId, 16); // Convert chainId to a number
           if (this.isWrongNetwork) await this.switchNetwork();
@@ -246,11 +325,11 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         if (isSameNetwork) return
         if (typeof chainId === 'undefined') {
           // Provide a default authorized network chainId or handle this case accordingly
-          chainId = 1; // Ethereum Mainnet
+          chainId = 137; // Ethereum Mainnet
         }
 
         if (!this.authorizedNetworks.includes(chainId)) {
-          alert('Unauthorized network. Please switch to an authorized network.');
+          // alert('Unauthorized network. Please switch to an authorized network.');
           return;
         }
 
@@ -272,7 +351,7 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
     },
     async setNetwork (network) {
       // Store the connected chain ID in local storage
-      return await localStorage.setItem('copperProtocolChainId', network.chainId);
+      return await localStorage.setItem('copperProtocolChainId', network);
 
     },
     async disconnectFromEth() {
@@ -297,10 +376,44 @@ export const useCopperProtocolStore = defineStore('copperProtocol', {
         console.error('Error disconnecting from Ethereum:', error.message);
       }
     },
+    async submitAirdrop () {
+      try {
+        
     
-    reload() {
+        // Check if user is connected to the right network
+        if (!this.isConnected || this.isWrongNetwork) {
+          alert("Please connect to the right network.");
+          return;
+        }
+    
+        // Perform the airdrop action using your contract
+        const copperAirdropContract = await this.copperAirdropContract;
+        const copperTokenContract = await this.copperTokenContract;
+        // console.log({
+        //   'copperTokenContract name': await copperTokenContract.name(),
+        //   'copperTokenContract symbol': await copperTokenContract.symbol(),
+        // })
+        const airdropResult = await copperAirdropContract.claimAirdrop();
+    
+        // Do something with airdropResult, e.g., show a success message
+        console.log(await airdropResult.wait());
+    
+    
+      } catch (error) {
+        console.error("Error submitting airdrop:", error.message);
+        alert("Error submitting airdrop:", error.message, Object.keys(error)  )
+      }
+    },
+    async copperTokenBalance (user) {
+      this.copperBalance = ethers.utils.formatEther(await this.copperTokenContract.balanceOf(user))
+      return this.copperBalance
+    },
+    async reload() {
       window.location.reload();
-      
+      if (this.account) {
+        console.log(`Checking if user has claimed`)
+        this.hasClaimed = await this.copperAirdropContract.hasClaimed(this.account) 
+      }
     },
 
     // ... other actions ...
